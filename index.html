@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Guia Git – COMMITS (Mazolatech)</title>
+  <meta name="color-scheme" content="dark light" />
+  <!-- Arquivo de estilos separado -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container" id="aplicacao">
+    <header>
+      <div class="brand">
+        <span class="logo" aria-hidden="true"></span>
+        <div>
+          <div class="title">Guia Git – <span class="muted">COMMITS</span></div>
+          <div class="row">
+            <span class="pill">Dark/Light</span>
+            <span class="pill">Copiar comandos</span>
+            <span class="pill">Responsivo</span>
+          </div>
+        </div>
+      </div>
+      <div class="actions" role="toolbar">
+        <!-- Barra de busca com input acessível -->
+        <label class="search" aria-label="Pesquisar comandos">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 21l-4.3-4.3m1.8-5.2a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <input id="entradaBusca" placeholder="Filtrar por comando, flag ou descrição… (ex: --amend, -S, revert)" />
+        </label>
+        <button id="botaoTema" title="Alternar tema" aria-pressed="false">🌗 Tema</button>
+      </div>
+    </header>
+
+    <!-- GRID de cartões -->
+    <div class="grid" id="gradeCartoes">
+
+      <!-- CARD: Commits básicos -->
+      <section class="card col-12" data-tags="commit basico -m -a -am add stage tracked mensagem">
+        <div class="card-hd">
+          <div class="card-title">💾 Commits básicos</div>
+          <div class="card-actions"><span class="tag">básico</span></div>
+        </div>
+        <div class="content">
+          <p class="desc">Formas rápidas de criar commits — com e sem <span class="kbd">git add</span>.</p>
+          <div class="codebox" data-code>
+            <button class="copy" aria-label="Copiar">Copiar</button>
+<pre><code><span class="comment"># adiciona TODAS as mudanças (novos/alterados) ao stage</span>
+git add .
+<span class="comment"># cria um commit com a mensagem informada</span>
+git commit -m "mensagem"
+
+<span class="comment"># adiciona AUTOMATICAMENTE arquivos já rastreados e comita</span>
+<span class="comment"># (não inclui ARQUIVOS NOVOS; use git add . se houver arquivos novos)</span>
+git commit -a -m "mensagem"
+<span class="comment"># atalho equivalente</span>
+git commit -am "mensagem"
+
+<span class="comment"># abre editor para mensagem multilinha (título + corpo)</span>
+git commit
+<span class="comment"># inclui o diff no editor (melhor contexto)</span>
+git commit -v
+</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARD: Commit parcial / por hunk -->
+      <section class="card col-12" data-tags="parcial hunk interativo add -p commit -p paths seletivo stage">
+        <div class="card-hd">
+          <div class="card-title">🧩 Commit parcial (por hunk)</div>
+          <div class="card-actions"><span class="tag">controle fino</span></div>
+        </div>
+        <div class="content">
+          <p class="desc">Escolha pedaços específicos do arquivo para compor um commit pequeno e claro.</p>
+          <div class="codebox" data-code>
+            <button class="copy">Copiar</button>
+<pre><code><span class="comment"># escolher pedaços (hunks) para o stage</span>
+git add -p
+<span class="comment"># perguntar hunks e comitar em seguida</span>
+git commit -p
+<span class="comment"># limitar a caminhos específicos (staged + estes paths)</span>
+git commit -- src/app.js server/index.ts
+</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARD: Amend / corrigir último commit -->
+      <section class="card col-12" data-tags="amend corrigir ultimo commit mensagem adicionar arquivo esquecido reset-author">
+        <div class="card-hd">
+          <div class="card-title">♻️ Corrigir o último commit (amend)</div>
+          <div class="card-actions"><span class="tag">ajustes rápidos</span></div>
+        </div>
+        <div class="content">
+          <p class="desc">Edite a mensagem ou inclua arquivos esquecidos no último commit.</p>
+          <div class="codebox" data-code>
+            <button class="copy">Copiar</button>
+<pre><code><span class="comment"># reabre o último commit para ajustar mensagem e/ou conteúdo</span>
+git commit --amend
+<span class="comment"># reaproveita a mesma mensagem; usa o que estiver em stage</span>
+git commit --amend --no-edit
+<span class="comment"># substitui a mensagem do último commit</span>
+git commit --amend -m "nova mensagem"
+<span class="comment"># atualiza autor/data para os atuais</span>
+git commit --amend --reset-author
+</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARD: Autoria / data / co-authors -->
+      <section class="card col-12" data-tags="autor author data committer co-authored-by trailers">
+        <div class="card-hd">
+          <div class="card-title">🧑‍💻 Autoria, data e co-authors</div>
+          <div class="card-actions"><span class="tag">metadados</span></div>
+        </div>
+        <div class="content">
+          <div class="codebox" data-code>
+            <button class="copy">Copiar</button>
+<pre><code><span class="comment"># definir autor manual neste commit</span>
+git commit --author="Seu Nome &lt;seu@email&gt;" -m "msg"
+<span class="comment"># definir data do committer (válido somente para este commit)</span>
+GIT_COMMITTER_DATE="2025-10-18 15:20" git commit -m "msg com data específica"
+
+<span class="comment"># co-autoria: coloque no corpo da mensagem</span>
+<span class="comment"># Co-authored-by: Nome &lt;email&gt;</span>
+</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARD: Assinar / certificar -->
+      <section class="card col-12" data-tags="assinar assinatura gpg ssh -S signed-off -s dco">
+        <div class="card-hd">
+          <div class="card-title">🔐 Assinar e certificar commits</div>
+          <div class="card-actions"><span class="tag">segurança</span></div>
+        </div>
+        <div class="content">
+          <p class="desc">Use DCO e assinatura GPG/SSH para atestar autoria.</p>
+          <div class="codebox" data-code>
+            <button class="copy">Copiar</button>
+<pre><code><span class="comment"># adiciona "Signed-off-by" (DCO)</span>
+git commit -s -m "msg"
+<span class="comment"># assina com GPG/SSH (requer chave configurada)</span>
+git commit -S -m "msg"
+<span class="comment"># dicas de config</span>
+<span class="comment"># git config --global user.signingkey &lt;ID_CHAVE&gt;</span>
+<span class="comment"># git config --global commit.gpgsign true</span>
+</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARD: Casos especiais / hooks -->
+      <section class="card col-12" data-tags="no-verify hooks allow-empty mensagem vazia ci">
+        <div class="card-hd">
+          <div class="card-title">🧪 Casos especiais e hooks</div>
+          <div class="card-actions"><span class="tag">avançado</span></div>
+        </div>
+        <div class="content">
+          <div class="codebox" data-code>
+            <button class="copy">Copiar</button>
+<pre><code><span class="comment"># pula hooks (pre-commit/commit-msg). use com cautela!</span>
+git commit --no-verify -m "msg"
+<span class="comment"># cria commit vazio (marcar milestone, ativar pipelines etc.)</span>
+git commit --allow-empty -m "chore: pipeline"
+<span class="comment"># permite commit sem mensagem (scripts/automação)</span>
+git commit --allow-empty-message -m ""
+</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARD: Template de mensagens -->
+      <section class="card col-12" data-tags="template mensagem commit.template padrao semantico conventional commits">
+        <div class="card-hd">
+          <div class="card-title">📝 Templates e padrão de mensagens</div>
+          <div class="card-actions"><span class="tag">qualidade</span></div>
+        </div>
+        <div class="content">
+          <p class="desc">Padronize mensagens e acelere o fluxo.</p>
+          <div class="codebox" data-code>
+            <button class="copy">Copiar</button>
+<pre><code><span class="comment"># definir template global</span>
+git config --global commit.template "C:/templates/commit.txt"
+<span class="comment"># exemplo de template:</span>
+<span class="comment"># Título curto (até 50 chars)</span>
+<span class="comment">#</span>
+<span class="comment"># Corpo: explique o porquê/impacto/teste</span>
+<span class="comment">#</span>
+<span class="comment"># Referências: issues/links</span>
+
+<span class="comment"># formato semântico sugerido:</span>
+<span class="comment"># &lt;tipo&gt;(&lt;escopo&gt;): resumo curto</span>
+<span class="comment"># tipos: feat, fix, docs, style, refactor, test, chore, perf, build, ci</span>
+</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARD: Desfazer / revisar -->
+      <section class="card col-12" data-tags="reset soft mixed hard revert log show diff staged restore">
+        <div class="card-hd">
+          <div class="card-title">↩️ Desfazer, revisar e preparar</div>
+          <div class="card-actions"><span class="tag">seguro</span></div>
+        </div>
+        <div class="content">
+          <div class="codebox" data-code>
+            <button class="copy">Copiar</button>
+<pre><code><span class="comment"># ver o que mudou</span>
+git status
+<span class="comment"># ver diffs não staged vs HEAD</span>
+git diff
+<span class="comment"># ver o que vai entrar no commit</span>
+git diff --staged
+<span class="comment"># tirar arquivo do stage (sem perder alterações)</span>
+git restore --staged caminho/arquivo
+<span class="comment"># descartar alterações de um arquivo (cuidado)</span>
+git restore caminho/arquivo
+
+<span class="comment"># desfazer último commit mantendo no stage</span>
+git reset --soft HEAD~1
+<span class="comment"># desfazer último commit e tirar do stage</span>
+git reset --mixed HEAD~1
+<span class="comment"># desfazer último commit e APAGAR alterações</span>
+git reset --hard HEAD~1
+
+<span class="comment"># desfazer commit já enviado (sem reescrever histórico)</span>
+git revert &lt;hash&gt;
+
+<span class="comment"># investigar histórico</span>
+git log --oneline --graph --decorate --all
+git show
+</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARD: Squash/fixup e rebase interativo -->
+      <section class="card col-12" data-tags="squash fixup autosquash rebase interativo organizar historia">
+        <div class="card-hd">
+          <div class="card-title">🧱 Organizar commits (squash/fixup)</div>
+          <div class="card-actions"><span class="tag">histórico limpo</span></div>
+        </div>
+        <div class="content">
+          <div class="codebox" data-code>
+            <button class="copy">Copiar</button>
+<pre><code><span class="comment"># marca commit para colar (sem manter mensagem)</span>
+git commit --fixup=&lt;hash&gt;
+<span class="comment"># marca commit para juntar mantendo mensagem</span>
+git commit --squash=&lt;hash&gt;
+<span class="comment"># rebase interativo aplicando autosquash (ajustar N)</span>
+git rebase -i --autosquash HEAD~5
+</code></pre>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <footer>
+      Mazolatech • Guia Git – COMMITS • 2025 • Feito com ❤ e muita atenção aos detalhes.
+    </footer>
+  </div>
+
+  <!-- Arquivo JS separado -->
+  <script src="js/app.js"></script>
+</body>
+</html>
