@@ -17,6 +17,7 @@
           <div class="title">Guia Git – <span class="muted">COMMITS</span></div>
           <div class="row">
             <span class="pill">Dark/Light</span>
+            <span class="pill">Dark/Light Mazola</span>
             <span class="pill">Copiar comandos</span>
             <span class="pill">Responsivo</span>
          
@@ -63,10 +64,6 @@ git commit -am "mensagem"
 git commit
 <span class="comment"># inclui o diff no editor (melhor contexto)</span>
 git commit -v
-
-<span class="comment"># Mover e Remover Arquivos # Move o arquivo rodape.css para a pasta css e já deixa no stage</span>
-git mv rodape.css css/rodape.css 
- 
 </code></pre>
           </div>
         </div>
@@ -136,6 +133,42 @@ GIT_COMMITTER_DATE="2025-10-18 15:20" git commit -m "msg com data específica"
           </div>
         </div>
       </section>
+
+
+
+<!-- CARD: Branchs no Git criar editar excluir -->
+      <section class="card col-12" data-tags="autor author data committer co-authored-by trailers">
+        <div class="card-hd">
+          <div class="card-title">🌿 Branches no Git: Criar, Editar, Deletar
+</div>
+          <div class="card-actions"><span class="tag">metadados</span></div>
+        </div>
+        <div class="content">
+          <div class="codebox" data-code>
+            <button class="copy">Copiar</button>
+<pre><code><span class="comment"># ✅ Cria uma nova branch local com o nome especificado</span>
+git branch nome-da-branch
+<span class="comment"># ✅ Cria e muda para a nova branch em uma única linha</span>
+git checkout -b nome-da-branch
+<span class="comment"># ✅ Alternativa moderna ao checkout para criar e mudar de branch</span>
+git switch -c nome-da-branch
+<span class="comment"># # ✅ EDITAR / MUDAR DE BRANCH</span>
+<span class="comment"># # ✅ Muda para a branch especificada</span>
+git checkout nome-da-branch
+<span class="comment"># ✅ Alternativa moderna ao checkout para mudar de branch</span>
+git switch nome-da-branch
+<span class="comment"># ❌ DELETAR BRANCH LOCAL</span>
+git branch -d nome-da-branch
+<span class="comment"># ❌ Força a exclusão da branch local (use com cautela)</span>
+git branch -D nome-da-branch
+<span class="comment"># ❌ DELETAR BRANCH REMOTA</span>
+git push origin --delete nome-da-branch
+</code></pre>
+          </div>
+        </div>
+      </section>
+
+
 
       <!-- CARD: Assinar / certificar -->
       <section class="card col-12" data-tags="assinar assinatura gpg ssh -S signed-off -s dco">
