@@ -90,6 +90,20 @@ git commit -- src/app.js server/index.ts
         </div>
       </section>
 
+      <!-- CARD: Git Commit -m vs -a -m -->
+<section class="card col-12" data-tags="commit automático rastreado mensagem">
+<div class="card-hd"><div class="card-title">📝 Git Commit: Diferença entre `-m` e `-a -m`</div><div class="card-actions">
+<span class="tag">commit</span></div></div><div class="content"><div class="codebox" data-code><button class="copy">Copiar</button><pre><code>
+<span class="comment">#Cria um commit com os arquivos que já foram adicionados com `git add`</span>
+git commit -m "mensagem explicando a alteração"
+<span class="comment">#Adiciona automaticamente todos os arquivos modificados e rastreados, e cria o commit</span> 
+git commit -a -m "mensagem explicando a alteração"
+<span class="comment">#❗ Atenção:  NÃO inclui arquivos novos que ainda não foram adicionados com </span>
+<span class="comment">#✅ Exemplo seguro para incluir arquivos novos:</span> 
+git add . git commit -m "mensagem incluindo arquivos novos" 
+</code></pre> </div>
+</div></section>
+
       <!-- CARD: Amend / corrigir último commit -->
       <section class="card col-12" data-tags="amend corrigir ultimo commit mensagem adicionar arquivo esquecido reset-author">
         <div class="card-hd">
@@ -170,6 +184,43 @@ git push origin --delete nome-da-branch
           </div>
         </div>
       </section>
+
+
+<!-- CARD: Git Tags criar listar alternar excluir enviar -->
+<section class="card col-12" data-tags="tags versionamento release marcação"><div class="card-hd">
+<div class="card-title">🏷️ Git Tags: Criar, Listar, Alternar, Excluir, Enviar</div>
+<div class="card-actions"><span class="tag">versionamento</span></div></div>
+<div class="content"><div class="codebox" data-code><button class="copy">Copiar</button><pre><code>
+<span class="comment">#Cria uma tag leve (sem mensagem ou metadados)</span>
+git tag v1.0.0
+<span class="comment">#Cria uma tag anotada (com mensagem e autor)</span>
+git tag -a v1.0.0 -m "Versão estável 1.0.0"
+<span class="comment">#Cria uma tag em um commit específico</span> 
+git tag -a v1.0.0 abc1234 -m "Tag em commit específico"
+<span class="comment">#Lista todas as tags existentes no repositório</span> 
+git tag
+<span class="comment">#Mostra detalhes de uma tag anotada</span> 
+git show v1.0.0
+<span class="comment">#Alterna para o estado de um commit marcado por uma tag</span> 
+git checkout v1.0.0
+<span class="comment">#Cria uma nova branch a partir de uma tag</span> 
+git checkout -b nova-branch v1.0.0
+<span class="comment">#Envia uma tag específica para o repositório remoto</span> 
+git push origin v1.0.0
+<span class="comment">#Envia todas as tags locais para o repositório remoto</span> 
+git push origin --tags
+<span class="comment">❌ Remove uma tag local</span> 
+git tag -d v1.0.0
+<span class="comment">❌ Remove uma tag do repositório remoto</span> 
+git push origin --delete tag v1.0.0
+<span class="comment">#Lista commits com suas tags associadas</span> 
+git log --decorate
+<span class="comment">#Mostra a tag mais próxima de um commit</span> 
+git describe --tags 
+</code></pre> </div>
+</div></section>
+
+
 
 
 
