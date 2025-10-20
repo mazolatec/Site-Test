@@ -171,23 +171,41 @@ git push origin --delete nome-da-branch
 
 
       <!-- CARD: Git Stash salvar aplicar listar excluir -->
-<section class="card col-12" data-tags="stash temporário alterações conflito"><div class="card-hd"><div class="card-title">🧳 Git Stash: Salvar, Aplicar, Listar, Excluir</div><div class="card-actions"><span class="tag">stash</span></div></div><div class="content"><div class="codebox" data-code><button class="copy">Copiar</button><pre><code><span class="comment">#Salva temporariamente todas as alterações não commitadas</span>git stash
-<span class="comment">#Salva com uma descrição personalizada</span> git stash save "ajustes no layout da home"
-<span class="comment">#Salva inclusive arquivos não rastreados (untracked)</span> git stash -u
-<span class="comment">#Salva tudo, incluindo arquivos ignorados (.gitignore)</span> git stash -a
-<span class="comment">#Lista todos os stashes salvos</span> git stash list
-<span class="comment">#Mostra as alterações contidas no stash mais recente</span> git stash show
-<span class="comment">#Mostra detalhes completos com diff</span> git stash show -p
-<span class="comment">#Aplica o stash mais recente</span> git stash apply
-<span class="comment">#Aplica um stash específico</span> git stash apply stash@{1}
-<span class="comment">#Aplica e remove da pilha (recupera e apaga)</span> git stash pop
-<span class="comment">#Aplica e remove um stash específico</span> git stash pop stash@{2}
-<span class="comment">#Remove o stash mais recente</span> git stash drop
-<span class="comment">#Remove um stash específico</span> git stash drop stash@{1}
-<span class="comment">#Remove todos os stashes salvos</span> git stash clear
-<span class="comment">#Salva alterações de um arquivo específico</span> git stash push -m "ajuste no botão" nome-do-arquivo
-<span class="comment">#Aplica stash em outra branch</span> git checkout outra-branch git stash apply stash@{0}
-<span class="comment">#Cria uma branch a partir de um stash</span> git stash branch nome-da-branch stash@{0} </code></pre> </div>
+<section class="card col-12" data-tags="stash temporário alterações conflito"><div class="card-hd"><div class="card-title">🧳 Git Stash: Salvar, Aplicar, Listar, Excluir</div><div class="card-actions"><span class="tag">stash</span></div></div><div class="content"><div class="codebox" data-code><button class="copy">Copiar</button><pre><code>
+<span class="comment">#Salva temporariamente todas as alterações não commitadas</span>
+git stash
+<span class="comment">#Salva com uma descrição personalizada</span> 
+git stash save "ajustes no layout da home"
+<span class="comment">#Salva inclusive arquivos não rastreados (untracked)</span> 
+git stash -u
+<span class="comment">#Salva tudo, incluindo arquivos ignorados (.gitignore)</span> 
+git stash -a
+<span class="comment">#Lista todos os stashes salvos</span> 
+git stash list
+<span class="comment">#Mostra as alterações contidas no stash mais recente</span> 
+git stash show
+<span class="comment">#Mostra detalhes completos com diff</span> 
+git stash show -p
+<span class="comment">#Aplica o stash mais recente</span> 
+git stash apply
+<span class="comment">#Aplica um stash específico</span> 
+git stash apply stash@{1}
+<span class="comment">#Aplica e remove da pilha (recupera e apaga)</span> 
+git stash pop
+<span class="comment">#Aplica e remove um stash específico</span> 
+git stash pop stash@{2}
+<span class="comment">#Remove o stash mais recente</span> 
+git stash drop
+<span class="comment">#Remove um stash específico</span> 
+git stash drop stash@{1}
+<span class="comment">#Remove todos os stashes salvos</span> 
+git stash clear
+<span class="comment">#Salva alterações de um arquivo específico</span> 
+git stash push -m "ajuste no botão" nome-do-arquivo
+<span class="comment">#Aplica stash em outra branch</span> 
+git checkout outra-branch git stash apply stash@{0}
+<span class="comment">#Cria uma branch a partir de um stash</span> 
+git stash branch nome-da-branch stash@{0} </code></pre> </div>
 </div></section>
 
 
